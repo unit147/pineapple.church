@@ -208,6 +208,7 @@ section>p{
 	position: relative;
 	width: 220px;
 	margin: 50px 0 0 405px;
+	cursor: move;
 }
 .troopatalk{
 	position: absolute;
@@ -345,6 +346,8 @@ section>p{
    ========================================================================== */
 .page-scene{
 	width: 100%;  height: 580px; 
+	max-width: 1440px;
+	margin: 0 auto;
 	background-size: 100%;
 	position: relative; 
 	overflow: hidden;
@@ -516,7 +519,7 @@ section>p{
 	/*font-size: 50px;*/
 	font-size: 46px;
 	margin: 0 auto;
-	color: #fff;
+	color: #FFD600;
 }
 
 .spaceship{
@@ -713,16 +716,27 @@ section>p{
 	cursor: pointer;
 }
 
+
 .boss{
 	width: 350px;
-	height: 170px;
+	height: 168px;
+	position: absolute;   
+}
+.boss-stunned:after{
+	content:'';
+	top:0;left:0;
+	width: 350px;
+	height: 168px;
 	position: absolute;  
+	background-image: url(../img/game/stunned-static.png);
+	background-position: 0 0;
+	-webkit-animation: boss-stunned .1s steps(5) infinite;
 }
 .boss img{
 	pointer-events:none;
 	width: 100%; 
 }
-.boss>span{ 
+.boss-hp{ 
 	display: block;
 	position: absolute;
 	top:180px;
@@ -733,6 +747,103 @@ section>p{
 	height: 2px;
 	background: red;
 	opacity: 0;
+}
+.boss-sp{ 
+	display: block;
+	position: absolute;
+	top:178px;
+	left:0;
+	right:0;
+	margin:0 auto;
+	width: 200px;
+	height: 2px;
+	background: rgba(255,255,255,.5);
+	opacity: 0;
+}
+.boss-display{
+	pointer-events:none;
+	width: 60px;
+	height: 48px;
+	position: absolute;
+	top:83px;
+	left:145px;
+	background: url(../img/game/jabba.gif) no-repeat;
+	background-position: 0 0;
+}
+.boss-hitbox{
+	width: 30%;
+	height: 55%;
+	margin: 20% 35% 0;
+	position: absolute;top:0;
+	/*background: rgba(255,0,0,.3);*/
+}
+.boss-bullet{
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	background: url(../img/game/boss-bullet.png) no-repeat;
+	z-index: 100;
+}
+.boss-shield:after{
+	content: '';
+	width: 197px;
+	height: 187px;
+	position: absolute;
+	left:0;right:0;top:10px;
+	margin: 0 auto;
+	background: url(../img/game/boss-shield.png) no-repeat; 
+}
+.hit-absorbtion{
+	position: absolute;
+	pointer-events:none;
+	z-index: 100;
+}
+.boss-dead{
+	background-position: -180px 0;
+}
+.boss-happy{
+	background-position: -60px 0;
+}
+.boss-hit-animation{ 
+    -webkit-animation: boss-hit .3s steps(4) infinite;
+}
+.boss-angry-animation{ 
+    background-position: -120px 0;
+}
+@-webkit-keyframes boss-hit{
+    from { background-position: 0px -48px; }
+     to { background-position: -180px -48px; }
+}
+@-webkit-keyframes boss-stunned{
+    from { background-position: 0px 0px; }
+     to { background-position: -1750px 0px; }
+}
+.player{
+	width: 75px;
+	height: 57px;
+	background: url(../img/game/player.png) no-repeat;
+	position: absolute; 
+}
+.player-bullet{
+	width: 20px;
+	height: 50px;
+	position: absolute; 
+	z-index: 100;
+	background: url(../img/game/bullet.png) no-repeat;
+}
+.laser-sword-unpicked{
+	position: absolute;
+	bottom: 15px;
+	left: 180px;
+	-webkit-transform:rotate(35deg);
+	-o-transform:rotate(35deg);
+	-moz-transform:rotate(35deg);
+	transform:rotate(35deg); 
+}
+.laser-sword-loaded{
+	position: absolute; 
+	bottom: 0px;
+	left: 36px; 
 }
 /* ==========================================================================
    Custom stuff
